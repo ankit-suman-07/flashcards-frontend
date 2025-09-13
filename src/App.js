@@ -1,11 +1,18 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Welcome from "./pages/welcome";
+import AuthPage from './pages/auth/auth-page';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h3>Flash Card App</h3>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/auth" element={<AuthPage />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
