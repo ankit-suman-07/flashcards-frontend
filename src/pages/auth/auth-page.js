@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useUserData } from '../../state/user-store';
+import { useUserData } from '../../store/user-store';
 
 const AuthPage = () => {
   const username = useUserData((state) => state.username);

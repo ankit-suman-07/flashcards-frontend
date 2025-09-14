@@ -1,9 +1,19 @@
-import React from 'react'
+import AuthForm from "../components/AuthForm";
+import useAuthStore from "../store/auth-store";
 
-const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
+const LoginPage = () => {
+  const login = useAuthStore((state) => state.login);
 
-export default Login
+  const handleLogin = async (email, password) => {
+    try {
+      await login(email, password);
+      window.location.href = "/dashboard"; // redirect
+    } catch (err) {
+      console.error("❌ Login failed:", err);
+    }
+  };
+
+  return <AuthForm onSubmit={handleLogin} />;
+};
+
+export default LoginPage;

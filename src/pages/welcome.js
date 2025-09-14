@@ -8,6 +8,7 @@ const Welcome = () => {
       <nav>
         <Link to="/">Home</Link> |{" "}
         <Link to="/auth">Auth</Link> |{" "}
+        <Link to="/login">Login</Link> |{" "}
       </nav>
         <h3>Welcome to the FlashCard App</h3>
     </div>
