@@ -1,35 +1,35 @@
 import React, { useState } from 'react'
+import { useUserData } from '../../state/user-store';
 
 const AuthPage = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [show, setShow] = useState(false);
+  const username = useUserData((state) => state.username);
+  const updateUser = useUserData((state) => state.updateUser);
+  
+  const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
 
-    // function toggleShow() {
-        
-    // }
   return (
     <div>
-        <input 
-            type='text' 
-            placeholder='enter username'
-            onChange={(e) => setUsername(e.target.value)}
-        />
-        
-        <br></br>
-        <input 
-            type='password'  
-            placeholder='enter password'
-            onChange={(e) => setPassword(e.target.value)}
-        />
-        
-        <button onClick={() => setShow(!show)} >Submit</button>
-        {
-            show && <div>
-                {username}
-                {password}
-                </div>
-        }
+      <input 
+        type='text' 
+        placeholder='enter username'
+        value={username}
+        onChange={(e) => updateUser(e.target.value)}
+      />
+      <br/>
+      <input 
+        type='password'
+        placeholder='enter password'
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={() => setShow(!show)}>Submit</button>
+      {
+        show && <div>
+          {username}
+          {password}
+        </div>
+      }
     </div>
   )
 }
