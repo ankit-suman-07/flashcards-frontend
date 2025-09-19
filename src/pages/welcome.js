@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import WelcomeImage from '../assets/img/welcome.png';
 
 
 const Welcome = () => {
@@ -10,6 +11,7 @@ const Welcome = () => {
         <Link to="/auth">Auth</Link> |{" "}
       </nav>
         <h3>Welcome to the FlashCard App</h3>
+        <img src={WelcomeImage} alt="FlashCard App" style={{height: '600px'}}/>
     </div>
   )
 }
