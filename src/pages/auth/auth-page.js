@@ -1,19 +1,41 @@
-import React, { useState } from 'react'
+import React, { use, useState, useEffect } from 'react'
+import axios from 'axios';
 
 const AuthPage = () => {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [show, setShow] = useState(false);
+    const [user, setUser] = useState(null);
 
     // function toggleShow() {
         
     // }
+    useEffect(() => {
+        if(user) {
+            window.location.href = "/home";
+        }
+    }, [user]);
+
+    useEffect(() => {
+        axios.post('http://localhost:5555/api/auth/login', {
+            email: email,
+            passwordHash: password
+        })
+        .then((response) => {
+            console.log(response.data);
+            setUser(response.data);
+
+        })
+        .catch((error) => {
+            console.error('There was an error!', error);
+        });
+    }, [show]);
   return (
     <div>
         <input 
             type='text' 
             placeholder='enter username'
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
         />
         
         <br></br>
@@ -26,7 +48,7 @@ const AuthPage = () => {
         <button onClick={() => setShow(!show)} >Submit</button>
         {
             show && <div>
-                {username}
+                {email}
                 {password}
                 </div>
         }

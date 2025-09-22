@@ -6,9 +6,9 @@ const Homepage = () => {
     <div>
         <h3>Welcome to the FlashCard App HOMEPAGE</h3>
         <div>
-            <Link to="/collection">Collections</Link> |{" "}
-            <Link to="/last">Last Revised</Link> |{" "}
-            <Link to="/create">Create Deck</Link>
+            <Link to="/all-decks">All Decks</Link> |{" "}
+            <Link to="/create-deck">Last Revised</Link> |{" "}
+            <Link to="/history">Create Deck</Link> |{" "}
         </div>
     </div>
   )
